@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_gradient_2">
+    <EditText
+            android:id="@+id/et_email"
+            style="@style/viewCustom"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:maxLength="40"
+            android:layout_above="@id/et_password"/>
+    <EditText
+            android:id="@+id/et_password"
+            style="@style/viewCustom"
+            android:layout_above="@id/btn_login"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:maxLength="16"/>
+    <Button
+            android:id="@+id/btn_login"
+            style="@style/buttonStyle"
+            android:layout_above="@id/tv_forgot_password"
+            android:text="@string/login_title">
+    </Button>
+    <TextView
+            android:id="@+id/tv_forgot_password"
+            style="@style/viewCustom"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:gravity="center_horizontal"
+            android:text="Forgot Password?"
+            android:textSize="20sp" android:layout_marginTop="168dp"/>
+    <Button
+            android:id="@+id/btn_register_account"
+            style="@style/buttonStyle"
+            android:layout_alignParentBottom="true"
+            android:text="@string/create_act">
+    </Button>
+</RelativeLayout>

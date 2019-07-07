@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_gradient_2">>
+
+    <EditText
+        android:id="@+id/et_username"
+        style="@style/viewCustom"
+        android:layout_above="@id/et_email"
+        android:ems="10"
+        android:hint="@string/username"
+        android:inputType="textPersonName"
+        android:maxLength="30"/>
+
+    <EditText
+        android:id="@+id/et_email"
+        style="@style/viewCustom"
+        android:ems="10"
+        android:layout_above="@id/et_password"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:maxLength="40"/>
+
+    <EditText
+        android:id="@+id/et_password"
+        style="@style/viewCustom"
+        android:layout_above="@id/btn_register"
+        android:ems="10"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:maxLength="16"/>
+
+    <Button
+        android:id="@+id/btn_register"
+        style="@style/buttonStyle"
+        android:layout_centerVertical="true"
+        android:text="@string/create_act"
+         />
+
+    <Button
+            android:id="@+id/btn_already_registered"
+            style="@style/buttonStyle"
+            android:layout_below="@id/btn_register"
+            android:text="@string/already_registered"
+    />
+</RelativeLayout>
