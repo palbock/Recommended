@@ -18,10 +18,6 @@ class MainActivity : AppCompatActivity() {
     private var mDatabase: FirebaseDatabase? = null
     private var mAuth: FirebaseAuth? = null
 
-    //UI elements
-    private val itemList: Array<String>
-        get() = arrayOf("Movies", "Travel", "Food", "Shows", "Stocks", "Fruit", "Games", "Chairs")
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,21 +34,26 @@ class MainActivity : AppCompatActivity() {
         //home navigation
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        //Categories grid
-        val gridview = findViewById<GridView>(R.id.categories)
-        gridview.adapter = ImageListAdapter(this, R.layout.list_item, itemList)
-        gridview.adapter = ImageAdapter(this)
+        var adapter: CategoryAdapter? = null
+        var categoryList : ArrayList<Categories>
+        categoryList = generateCategoryData()
+        adapter = CategoryAdapter(this, categoryList)
 
-        gridview.onItemClickListener = AdapterView.OnItemClickListener { parent, v, position, id ->
-            if (id.equals("Movies")){
+        val gridview = findViewById<GridView>(R.id.categories)
+        gridview.adapter = adapter
+
+        gridview.setOnItemClickListener {adapterView, view, i, l ->
+            Toast.makeText(this, " Selected Category is = "+ categoryList.get(i).category_name, Toast.LENGTH_SHORT).show()
+
+            if (categoryList.get(i).category_name == "Movies"){
                 val intent = Intent(this@MainActivity, MovieRecommendationActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
             }
-            Toast.makeText(this@MainActivity, " Clicked Position: " + (position + 1),
-                Toast.LENGTH_SHORT).show()
         }
+
+
     }
 
     override fun onStart() {
@@ -96,6 +97,48 @@ class MainActivity : AppCompatActivity() {
             // Invoke the superclass to handle it.
             super.onOptionsItemSelected(item)
         }
+    }
+
+    private fun generateCategoryData(): ArrayList<Categories> {
+        var result = ArrayList<Categories>()
+
+        var category = Categories()
+        category.category_id = 1
+        category.category_name = "Movies"
+        category.category_photo = R.drawable.sample_0
+        result.add(category)
+
+        category = Categories()
+        category.category_id = 2
+        category.category_name = "apple"
+        category.category_photo = R.drawable.sample_1
+        result.add(category)
+
+        category = Categories()
+        category.category_id = 3
+        category.category_name = "apple"
+        category.category_photo = R.drawable.sample_2
+        result.add(category)
+
+        category = Categories()
+        category.category_id = 4
+        category.category_name = "apple"
+        category.category_photo = R.drawable.sample_3
+        result.add(category)
+
+        category = Categories()
+        category.category_id = 5
+        category.category_name = "apple"
+        category.category_photo = R.drawable.sample_4
+        result.add(category)
+
+        category = Categories()
+        category.category_id = 6
+        category.category_name = "apple"
+        category.category_photo = R.drawable.sample_5
+        result.add(category)
+
+        return result
     }
 
     override fun finish() {
