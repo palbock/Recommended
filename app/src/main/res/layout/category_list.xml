@@ -2,7 +2,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-                android:background="#ffffff"
+                android:background="#CAC7C7"
                 android:padding="10dp">
     <ImageView
             android:layout_width="80dp"
@@ -20,6 +20,7 @@
                 android:id="@+id/lbl_name"
                 android:textStyle="bold"
                 android:textSize="18dp"
+                android:textColor="#911717"
                 android:layout_centerHorizontal="true"/>
     </RelativeLayout>
 </RelativeLayout>

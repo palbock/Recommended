@@ -10,7 +10,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#5e7974"
+            android:background="#858580"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"/>
 
@@ -25,5 +25,13 @@
             android:padding="@dimen/padding_default"
             android:verticalSpacing="@dimen/padding_default" />
 
+    <TextView
+            android:id="@+id/created_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_centerHorizontal="true"
+            android:text="@string/created_by"
+            android:layout_marginTop="500dp"/>
 
 </RelativeLayout>
