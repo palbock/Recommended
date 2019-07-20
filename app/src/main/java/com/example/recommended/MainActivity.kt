@@ -43,13 +43,17 @@ class MainActivity : AppCompatActivity() {
         gridview.adapter = adapter
 
         gridview.setOnItemClickListener {adapterView, view, i, l ->
-            Toast.makeText(this, " Selected Category is = "+ categoryList.get(i).category_name, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "You have selected "+ categoryList.get(i).category_name, Toast.LENGTH_SHORT).show()
 
-            if (categoryList.get(i).category_name == "Movies"){
-                val intent = Intent(this@MainActivity, MovieRecommendationActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+            var categoryName: String? = categoryList.get(i).category_name
+
+            when(categoryName){
+                "Movies" -> switchToMovieActivity()
+                "Food" -> switchToFoodActivity()
+                "Music" -> switchToMusicActivity()
+                "Travel" -> switchToTravelActivity()
+                "Podcast" -> switchToPodcastActivity()
+                "Games" -> switchToGamesActivity()
             }
         }
 
@@ -105,40 +109,82 @@ class MainActivity : AppCompatActivity() {
         var category = Categories()
         category.category_id = 1
         category.category_name = "Movies"
-        category.category_photo = R.drawable.sample_0
+        category.category_photo = R.drawable.movie_image
         result.add(category)
 
         category = Categories()
         category.category_id = 2
-        category.category_name = "apple"
-        category.category_photo = R.drawable.sample_1
+        category.category_name = "Food"
+        category.category_photo = R.drawable.food_image
         result.add(category)
 
         category = Categories()
         category.category_id = 3
-        category.category_name = "apple"
-        category.category_photo = R.drawable.sample_2
+        category.category_name = "Music"
+        category.category_photo = R.drawable.music_image
         result.add(category)
 
         category = Categories()
         category.category_id = 4
-        category.category_name = "apple"
-        category.category_photo = R.drawable.sample_3
+        category.category_name = "Travel"
+        category.category_photo = R.drawable.travel_image
         result.add(category)
 
         category = Categories()
         category.category_id = 5
-        category.category_name = "apple"
-        category.category_photo = R.drawable.sample_4
+        category.category_name = "Games"
+        category.category_photo = R.drawable.games_image
         result.add(category)
 
         category = Categories()
         category.category_id = 6
-        category.category_name = "apple"
-        category.category_photo = R.drawable.sample_5
+        category.category_name = "Podcast"
+        category.category_photo = R.drawable.podcast_image
         result.add(category)
 
         return result
+    }
+
+    fun switchToFoodActivity(){
+        val intent = Intent(this@MainActivity, FoodRecommendationActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
+
+    fun switchToMovieActivity(){
+        val intent = Intent(this@MainActivity, MovieRecommendationActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
+
+    fun switchToMusicActivity(){
+        val intent = Intent(this@MainActivity, MusicRecommendationActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
+
+    fun switchToTravelActivity(){
+        val intent = Intent(this@MainActivity, TravelRecommendationActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
+
+    fun switchToGamesActivity(){
+        val intent = Intent(this@MainActivity, GamesRecommendationActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+    }
+
+    fun switchToPodcastActivity(){
+        val intent = Intent(this@MainActivity, PodcastRecommendationActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
     override fun finish() {
